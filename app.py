@@ -22,11 +22,12 @@ app.static_folder = 'static'
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertModel.from_pretrained('bert-base-uncased')
 
-sent_bertphrase_embeddings = joblib.load(r"C:\mental-health-chatbot-main\model\questionembedding.dump")
-sent_bertphrase_ans_embeddings = joblib.load(r"C:\mental-health-chatbot-main\model\ansembedding.dump")
 
+sent_bertphrase_embeddings = joblib.load(r"model/questionembedding.dump")
+sent_bertphrase_ans_embeddings = joblib.load(r"model/ansembedding.dump")
+df = pd.read_csv(r"model/20200325_counsel_chat.csv", encoding="utf-8")
 stop_w = stopwords.words('english')
-df = pd.read_csv(r"C:\mental-health-chatbot-main\model\20200325_counsel_chat.csv", encoding="utf-8")
+# df = pd.read_csv(r"C:\mental-health-chatbot-main\model\20200325_counsel_chat.csv", encoding="utf-8")
 lmtzr = WordNetLemmatizer()
 
 def get_embeddings(texts):
